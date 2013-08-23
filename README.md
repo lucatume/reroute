@@ -1,16 +1,24 @@
 Reroute
 ========
 
-A small URL router in PHP built out of liquid rage.
+A small URL router in PHP built out of liquid rage. (There were no decent, lightweight URL routers for PHP 5.2 at the time)
+
+Its core was inspired by the excellent [klein.php](https://github.com/chriso/klein.php) project.
+
+Reroute is known to work on PHP 5.2 and above.
 
 
 
 ### How it works
 
-In your `index.php` file, using your Reroute instance's `add()` method, you build up a 
+Reroute has only 2 public methods: `add` and `run`.
+
+In the site's `index.php` file, using a Reroute instance's `add` method, you build up a 
 key-value list of routes and closures.
 
-When the requested url matches that route, the closure fires and provides the 
+When you're done adding routes, you call the Reroute instance's `run` method.
+
+When a requested URL matches a known route, the matching closure fires and provides the 
 necessary HTML. All other URLs are redirected to a hard-coded closure (your 404 error page).
 
 Reroute was designed for clean URLs and thus doesn't give a hoot about file extension.
@@ -64,6 +72,7 @@ $router->run();
 
 ?>
 ```
+
 
 
 ### Apache v2 License
